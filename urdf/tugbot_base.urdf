@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<robot name="tugbot">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0312107498031558 -0.000413707295763788 0.186455185788056"
+        rpy="0 0 0" />
+      <mass
+        value="30.9099300932655" />
+      <inertia
+        ixx="0.821416101401086"
+        ixy="0.0046303531986253"
+        ixz="-0.00761120781106294"
+        iyy="0.675917247243351"
+        iyz="-0.000569414171942934"
+        izz="0.99593678747705" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_left">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 5.55111512312578E-17 -0.0435931533922383"
+        rpy="0 0 0" />
+      <mass
+        value="5.45489492215439" />
+      <inertia
+        ixx="0.00001638"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00002654"
+        iyz="0.0"
+        izz="0.00001638" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/wheel_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/wheel_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_left"
+    type="continuous">
+    <origin
+      xyz="0 0.2175 0.195"
+      rpy="-1.5708 0.98331 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_left" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="wheel_right">
+    <inertial>
+      <origin
+        xyz="0 -5.55111512312578E-17 -0.0435931533922384"
+        rpy="0 0 0" />
+      <mass
+        value="5.45489492215438" />
+      <inertia
+        ixx="0.00001638"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00002654"
+        iyz="0.0"
+        izz="0.00001638" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/wheel_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/wheel_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_right"
+    type="continuous">
+    <origin
+      xyz="0 -0.2175 0.195"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_right" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="gripper">
+    <inertial>
+      <origin
+        xyz="-1.04419302832115E-06 -0.0637199333095419 0.325909155025816"
+        rpy="0 0 0" />
+      <mass
+        value="0.400152535568579" />
+      <inertia
+        ixx="0.000679760143574812"
+        ixy="5.00395957280157E-07"
+        ixz="2.76186131575311E-09"
+        iyy="0.00035373790928951"
+        iyz="2.94964906868887E-06"
+        izz="0.000677071643423345" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/gripper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/gripper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gripper"
+    type="revolute">
+    <origin
+      xyz="0.0015 0 0.017289"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="gripper" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="scan_front">
+    <inertial>
+      <origin
+        xyz="-0.000611851602215496 -0.014722090497278 -0.000682610128807618"
+        rpy="0 0 0" />
+      <mass
+        value="0.456706482120092" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.004"
+        rpy="1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scan_front"
+    type="fixed">
+    <origin
+      xyz="0.244 0.0 0.1526"
+      rpy="3.14159265359 0 0"/>
+    <!--origin
+      xyz="0.2215 0 0.1654"
+      rpy="-1.5708 0 -1.5708" /--> 
+    <parent
+      link="base_link" />
+    <child
+      link="scan_front" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="scan_back">
+    <inertial>
+      <origin
+        xyz="1.23596115559899E-05 0.0321799381547824 -0.000121015596275809"
+        rpy="0 0 0" />
+      <mass
+        value="0.142943457251992" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.051"
+        rpy="-1.5708 0 -1.5708" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scan_back"
+    type="fixed">
+    <origin
+      xyz="-0.208 0.0 0.2174"
+      rpy="0 0 3.14159265359" />
+    <parent
+      link="base_link" />
+    <child
+      link="scan_back" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="scan_omni">
+    <inertial>
+      <origin
+        xyz="0.000294784457680941 0.0357745257652128 -2.58019387500141E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.58508215249429" />
+      <inertia
+        ixx="2.07154320915643E-06"
+        ixy="5.03254180621061E-06"
+        ixz="-4.51031839859191E-10"
+        iyy="1.32778113947939E-05"
+        iyz="1.84582685261166E-10"
+        izz="1.53493545710359E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.039"
+        rpy="1.57079632679 0 -3.14159265359" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_3d.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/lidar_3d.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scan_omni"
+    type="fixed">
+    <origin
+      xyz="-0.186 0.00 0.5265"
+      rpy="0 0 0"/>
+    <parent
+      link="base_link" />
+    <child
+      link="scan_omni" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="camera_front_link">
+    <inertial>
+      <origin
+        xyz="1.15236867704871E-05 0 -0.0119848954338611"
+        rpy="0 0 0" />
+      <mass
+        value="0.0455138431609459" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.025 0 0"
+        rpy="-1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/camera_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/camera_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_front_link"
+    type="fixed">
+    <origin
+      xyz="0.034 0 0.4465"
+      rpy="0.002 0.095 0.031" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_front_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <joint name="camera_front_camera_center" type="fixed">
+    <origin xyz="0 0 0"
+            rpy="0 0 0"/>
+    <parent link="camera_front_link"/>
+    <child link="camera_front_camera_center" />
+  </joint>
+  <link name="camera_front_camera_center" />
+  <joint name="camera_front_left_camera_frame" type="fixed">
+    <origin xyz="0 0.06 0"
+            rpy="0 0 0"/>
+    <parent link="camera_front_camera_center"/>
+    <child link="camera_front_left_camera_frame" />
+  </joint>
+  <link name="camera_front_left_camera_frame" />
+  <joint name="camera_front_left_camera_optical_frame" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+    <parent link="camera_front_left_camera_frame"/>
+    <child link="camera_front_left_camera_optical_frame"/>
+  </joint>
+  <link name="camera_front_left_camera_optical_frame"/>
+  <link
+    name="camera_back_link">
+    <inertial>
+      <origin
+        xyz="0.00223774607504085 0.00445406187319441 -0.00466244676422983"
+        rpy="0 0 0" />
+      <mass
+        value="0.000295253172138908" />
+      <inertia
+        ixx="9.89547466548179E-10"
+        ixy="4.08060876616815E-10"
+        ixz="4.75008797859597E-09"
+        iyy="7.12321999019543E-08"
+        iyz="-8.31551895150735E-11"
+        izz="7.02567372460551E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57079632679 0 1.57079632679" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/camera_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tb_factory/meshes/camera_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_back_link"
+    type="fixed">
+    <origin
+      xyz="-0.276 0.0 0.435"
+      rpy="-0.02 -0.002 -3.1"/>
+    <parent
+      link="base_link" />
+    <child
+      link="camera_back_link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="wheel_left">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="wheel_right">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <legacyMode>false</legacyMode>
+      <updateRate>50</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftJoint>wheel_left</leftJoint>
+      <rightJoint>wheel_right</rightJoint>
+      <wheelSeparation>0.505</wheelSeparation>
+      <wheelDiameter>0.390</wheelDiameter>
+      <wheelAcceleration>0</wheelAcceleration>
+      <wheelTorque>5</wheelTorque>
+      <torque>0</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <publishTf>1</publishTf>
+      <publishOdomTF>true</publishOdomTF>
+      <rosDebugLevel>na</rosDebugLevel>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+    </plugin>
+  </gazebo>
+</robot>
