@@ -1,11 +1,125 @@
 <?xml version="1.0"?>
-<robot name="car">
-  <link name="base_link">
-    <visual name="base_visual">
-      <origin xyz="1 0 0.0" rpy="1.57 0 3.14" />
-      <geometry>
-        <mesh filename="package://ndt_localizer/urdf/lexus.dae" scale="1.0 1.0 1.0"/>
-      </geometry>
+<robot name="tugbot">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0312107498031558 -0.000413707295763788 0.186455185788056"
+        rpy="0 0 0" />
+      <mass
+        value="30.9099300932655" />
+      <inertia
+        ixx="0.821416101401086"
+        ixy="0.0046303531986253"
+        ixz="-0.00761120781106294"
+        iyy="0.675917247243351"
+        iyz="-0.000569414171942934"
+        izz="0.99593678747705" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
     </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    </collision>
   </link>
+  <link
+    name="wheel_left">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 5.55111512312578E-17 -0.0435931533922383"
+        rpy="0 0 0" />
+      <mass
+        value="5.45489492215439" />
+      <inertia
+        ixx="0.00001638"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00002654"
+        iyz="0.0"
+        izz="0.00001638" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    </collision>
+  </link>
+  <joint
+    name="wheel_left"
+    type="continuous">
+    <origin
+      xyz="0 0.2175 0.195"
+      rpy="-1.5708 0.98331 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_left" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="wheel_right">
+    <inertial>
+      <origin
+        xyz="0 -5.55111512312578E-17 -0.0435931533922384"
+        rpy="0 0 0" />
+      <mass
+        value="5.45489492215438" />
+      <inertia
+        ixx="0.00001638"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00002654"
+        iyz="0.0"
+        izz="0.00001638" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <material
+        name="">
+        <color
+          rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    </collision>
+  </link>
+  <joint
+    name="wheel_right"
+    type="continuous">
+    <origin
+      xyz="0 -0.2175 0.195"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_right" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
 </robot>
